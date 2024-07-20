@@ -1,0 +1,42 @@
+Node 0:ENTRY_POINT
+ {
+Numeric variables:{'block.timestamp': block.timestamp uint (1,inf)
+, 'block.difficulty': block.difficulty uint (1,inf)
+, 'block.number': block.number uint (1,inf)
+, 'msg.sender': msg.sender uint (1,inf)
+, '_array': _array:
+, 'index': index uint (0,inf)
+, 'maybeOutOfBounds': maybeOutOfBounds uint (0,inf)
+},
+Booleans variables:{},
+Constraints:[]
+}
+
+Node 1:NEW VARIABLE maybeOutOfBounds = _array[index]
+ {
+Numeric variables:{'block.timestamp': block.timestamp uint (1,inf)
+, 'block.difficulty': block.difficulty uint (1,inf)
+, 'block.number': block.number uint (1,inf)
+, 'msg.sender': msg.sender uint (1,inf)
+, '_array': _array:
+, 'index': index uint (0,inf)
+, 'maybeOutOfBounds': maybeOutOfBounds uint (0,inf)
+},
+Booleans variables:{},
+Constraints:[]
+}
+
+Node 2:
+ {
+Numeric variables:{'block.timestamp': block.timestamp uint (1,inf)
+, 'block.difficulty': block.difficulty uint (1,inf)
+, 'block.number': block.number uint (1,inf)
+, 'msg.sender': msg.sender uint (1,inf)
+, '_array': _array:
+, 'index': index uint (0,inf)
+, 'maybeOutOfBounds': maybeOutOfBounds uint (0,inf)
+},
+Booleans variables:{},
+Constraints:[]
+}
+

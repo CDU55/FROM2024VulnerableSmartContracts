@@ -1,0 +1,69 @@
+Node 0:ENTRY_POINT
+ {
+Numeric variables:{'block.timestamp': block.timestamp uint (1,inf)
+, 'block.difficulty': block.difficulty uint (1,inf)
+, 'block.number': block.number uint (1,inf)
+, 'msg.sender': msg.sender uint (1,inf)
+, 'msg.value': msg.value uint (1,inf)
+, 'deposits': deposits:
+},
+Booleans variables:{},
+Constraints:[]
+}
+
+Node 1:EXPRESSION require(bool)(deposits[msg.sender] > 0)
+ {
+Numeric variables:{'block.timestamp': block.timestamp uint (1,inf)
+, 'block.difficulty': block.difficulty uint (1,inf)
+, 'block.number': block.number uint (1,inf)
+, 'msg.sender': msg.sender uint (1,inf)
+, 'msg.value': msg.value uint (1,inf)
+, 'deposits': deposits:
+},
+Booleans variables:{},
+Constraints:[]
+}
+
+Node 2:EXPRESSION address(msg.sender).transfer(deposits[msg.sender])
+ {
+Numeric variables:{'block.timestamp': block.timestamp uint (1,inf)
+, 'block.difficulty': block.difficulty uint (1,inf)
+, 'block.number': block.number uint (1,inf)
+, 'msg.sender': msg.sender uint (1,inf)
+, 'msg.value': msg.value uint (1,inf)
+, 'deposits': deposits:
+},
+Booleans variables:{'TMP_3': TMP_3 bool deposits[msg.sender] > 0 assert/require
+},
+Constraints:[('TMP_3', True)]
+}
+
+Node 3:EXPRESSION assert(bool)(deposits[msg.sender] == 0)
+ {
+Numeric variables:{'block.timestamp': block.timestamp uint (1,inf)
+, 'block.difficulty': block.difficulty uint (1,inf)
+, 'block.number': block.number uint (1,inf)
+, 'msg.sender': msg.sender uint (1,inf)
+, 'msg.value': msg.value uint (1,inf)
+, 'deposits': deposits:
+},
+Booleans variables:{'TMP_3': TMP_3 bool deposits[msg.sender] > 0 assert/require
+},
+Constraints:[('TMP_3', True)]
+}
+
+Node 4:
+ {
+Numeric variables:{'block.timestamp': block.timestamp uint (1,inf)
+, 'block.difficulty': block.difficulty uint (1,inf)
+, 'block.number': block.number uint (1,inf)
+, 'msg.sender': msg.sender uint (1,inf)
+, 'msg.value': msg.value uint (1,inf)
+, 'deposits': deposits:
+},
+Booleans variables:{'TMP_3': TMP_3 bool deposits[msg.sender] > 0 assert/require
+, 'TMP_7': TMP_7 bool deposits[msg.sender] == 0 assert/require
+},
+Constraints:[('TMP_3', True), ('TMP_7', True)]
+}
+

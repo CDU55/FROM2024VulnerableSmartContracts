@@ -1,0 +1,226 @@
+Node 0:ENTRY_POINT
+ {
+Numeric variables:{'block.timestamp': block.timestamp uint (1,inf)
+, 'block.difficulty': block.difficulty uint (1,inf)
+, 'block.number': block.number uint (1,inf)
+, 'msg.sender': msg.sender uint (1,inf)
+, 'msg.value': msg.value uint (1,inf)
+, 'participants': participants:
+, '_someNumber': _someNumber uint (0,inf)
+, '_prize': _prize uint (0,inf)
+, '_fee': _fee uint (0,inf)
+, 'validateMe': validateMe uint (0,inf)
+},
+Booleans variables:{'_gameEnded': _gameEnded bool (0,1)
+},
+Constraints:[]
+}
+
+Node 1:EXPRESSION require(bool,string)(msg.value == _fee,Please attach the correct fee)
+ {
+Numeric variables:{'block.timestamp': block.timestamp uint (1,inf)
+, 'block.difficulty': block.difficulty uint (1,inf)
+, 'block.number': block.number uint (1,inf)
+, 'msg.sender': msg.sender uint (1,inf)
+, 'msg.value': msg.value uint (1,inf)
+, 'participants': participants:
+, '_someNumber': _someNumber uint (0,inf)
+, '_prize': _prize uint (0,inf)
+, '_fee': _fee uint (0,inf)
+, 'validateMe': validateMe uint (0,inf)
+},
+Booleans variables:{'_gameEnded': _gameEnded bool (0,1)
+},
+Constraints:[]
+}
+
+Node 2:EXPRESSION require(bool,string)(participants[msg.sender] == 0,You already participated)
+ {
+Numeric variables:{'block.timestamp': block.timestamp uint (1,inf)
+, 'block.difficulty': block.difficulty uint (1,inf)
+, 'block.number': block.number uint (1,inf)
+, 'msg.sender': msg.sender uint (1,inf)
+, 'msg.value': msg.value uint (1,inf)
+, 'participants': participants:
+, '_someNumber': _someNumber uint (0,inf)
+, '_prize': _prize uint (0,inf)
+, '_fee': _fee uint (0,inf)
+, 'validateMe': validateMe uint (0,inf)
+},
+Booleans variables:{'_gameEnded': _gameEnded bool (0,1)
+, 'TMP_2': TMP_2 bool msg.value == _fee assert/require
+},
+Constraints:[('TMP_2', True)]
+}
+
+Node 3:EXPRESSION require(bool,string)(_gameEnded == false,The game has ended)
+ {
+Numeric variables:{'block.timestamp': block.timestamp uint (1,inf)
+, 'block.difficulty': block.difficulty uint (1,inf)
+, 'block.number': block.number uint (1,inf)
+, 'msg.sender': msg.sender uint (1,inf)
+, 'msg.value': msg.value uint (1,inf)
+, 'participants': participants:
+, '_someNumber': _someNumber uint (0,inf)
+, '_prize': _prize uint (0,inf)
+, '_fee': _fee uint (0,inf)
+, 'validateMe': validateMe uint (0,inf)
+},
+Booleans variables:{'_gameEnded': _gameEnded bool (0,1)
+, 'TMP_2': TMP_2 bool msg.value == _fee assert/require
+, 'TMP_4': TMP_4 bool participants[msg.sender] == 0 assert/require
+},
+Constraints:[('TMP_2', True), ('TMP_4', True)]
+}
+
+Node 4:IF (_someNumber <= validateMe) || (_someNumber / validateMe) == 1
+ {
+Numeric variables:{'block.timestamp': block.timestamp uint (1,inf)
+, 'block.difficulty': block.difficulty uint (1,inf)
+, 'block.number': block.number uint (1,inf)
+, 'msg.sender': msg.sender uint (1,inf)
+, 'msg.value': msg.value uint (1,inf)
+, 'participants': participants:
+, '_someNumber': _someNumber uint (0,inf)
+, '_prize': _prize uint (0,inf)
+, '_fee': _fee uint (0,inf)
+, 'validateMe': validateMe uint (0,inf)
+},
+Booleans variables:{'_gameEnded': _gameEnded bool (0,1)
+, 'TMP_2': TMP_2 bool msg.value == _fee assert/require
+, 'TMP_4': TMP_4 bool participants[msg.sender] == 0 assert/require
+, 'TMP_6': TMP_6 bool _gameEnded == false assert/require
+},
+Constraints:[('TMP_2', True), ('TMP_4', True), ('TMP_6', True)]
+}
+
+Node 5:EXPRESSION address(msg.sender).transfer(_prize)
+ {
+Numeric variables:{'block.timestamp': block.timestamp uint (1,inf)
+, 'block.difficulty': block.difficulty uint (1,inf)
+, 'block.number': block.number uint (1,inf)
+, 'msg.sender': msg.sender uint (1,inf)
+, 'msg.value': msg.value uint (1,inf)
+, 'participants': participants:
+, '_someNumber': _someNumber uint (0,inf)
+, '_prize': _prize uint (0,inf)
+, '_fee': _fee uint (0,inf)
+, 'validateMe': validateMe uint (0,inf)
+},
+Booleans variables:{'_gameEnded': _gameEnded bool (0,1)
+, 'TMP_2': TMP_2 bool msg.value == _fee assert/require
+, 'TMP_4': TMP_4 bool participants[msg.sender] == 0 assert/require
+, 'TMP_6': TMP_6 bool _gameEnded == false assert/require
+, 'TMP_11': TMP_11 bool (_someNumber <= validateMe) || (_someNumber / validateMe) == 1 condition
+},
+Constraints:[('TMP_2', True), ('TMP_4', True), ('TMP_6', True), ('TMP_11', True)]
+}
+
+Node 6:EXPRESSION _gameEnded = true
+ {
+Numeric variables:{'block.timestamp': block.timestamp uint (1,inf)
+, 'block.difficulty': block.difficulty uint (1,inf)
+, 'block.number': block.number uint (1,inf)
+, 'msg.sender': msg.sender uint (1,inf)
+, 'msg.value': msg.value uint (1,inf)
+, 'participants': participants:
+, '_someNumber': _someNumber uint (0,inf)
+, '_prize': _prize uint (0,inf)
+, '_fee': _fee uint (0,inf)
+, 'validateMe': validateMe uint (0,inf)
+},
+Booleans variables:{'_gameEnded': _gameEnded bool (0,1)
+, 'TMP_2': TMP_2 bool msg.value == _fee assert/require
+, 'TMP_4': TMP_4 bool participants[msg.sender] == 0 assert/require
+, 'TMP_6': TMP_6 bool _gameEnded == false assert/require
+, 'TMP_11': TMP_11 bool (_someNumber <= validateMe) || (_someNumber / validateMe) == 1 condition
+},
+Constraints:[('TMP_2', True), ('TMP_4', True), ('TMP_6', True), ('TMP_11', True)]
+}
+
+Node 7:EXPRESSION participants[msg.sender] = 1
+ {
+Numeric variables:{'block.timestamp': block.timestamp uint (1,inf)
+, 'block.difficulty': block.difficulty uint (1,inf)
+, 'block.number': block.number uint (1,inf)
+, 'msg.sender': msg.sender uint (1,inf)
+, 'msg.value': msg.value uint (1,inf)
+, 'participants': participants:
+, '_someNumber': _someNumber uint (0,inf)
+, '_prize': _prize uint (0,inf)
+, '_fee': _fee uint (0,inf)
+, 'validateMe': validateMe uint (0,inf)
+},
+Booleans variables:{'_gameEnded': _gameEnded bool (0,1)
+, 'TMP_2': TMP_2 bool msg.value == _fee assert/require
+, 'TMP_4': TMP_4 bool participants[msg.sender] == 0 assert/require
+, 'TMP_6': TMP_6 bool _gameEnded == false assert/require
+, 'TMP_11': TMP_11 bool (_someNumber <= validateMe) || (_someNumber / validateMe) == 1 condition
+},
+Constraints:[('TMP_2', True), ('TMP_4', True), ('TMP_6', True), ('TMP_11', False)]
+}
+
+Node 8:EXPRESSION _someNumber = _someNumber / validateMe
+ {
+Numeric variables:{'block.timestamp': block.timestamp uint (1,inf)
+, 'block.difficulty': block.difficulty uint (1,inf)
+, 'block.number': block.number uint (1,inf)
+, 'msg.sender': msg.sender uint (1,inf)
+, 'msg.value': msg.value uint (1,inf)
+, 'participants': participants:
+, '_someNumber': _someNumber uint (0,inf)
+, '_prize': _prize uint (0,inf)
+, '_fee': _fee uint (0,inf)
+, 'validateMe': validateMe uint (0,inf)
+},
+Booleans variables:{'_gameEnded': _gameEnded bool (0,1)
+, 'TMP_2': TMP_2 bool msg.value == _fee assert/require
+, 'TMP_4': TMP_4 bool participants[msg.sender] == 0 assert/require
+, 'TMP_6': TMP_6 bool _gameEnded == false assert/require
+, 'TMP_11': TMP_11 bool (_someNumber <= validateMe) || (_someNumber / validateMe) == 1 condition
+},
+Constraints:[('TMP_2', True), ('TMP_4', True), ('TMP_6', True), ('TMP_11', False)]
+}
+
+Node 9:END_IF
+ {
+Numeric variables:{'block.timestamp': block.timestamp uint (1,inf)
+, 'block.difficulty': block.difficulty uint (1,inf)
+, 'block.number': block.number uint (1,inf)
+, 'msg.sender': msg.sender uint (1,inf)
+, 'msg.value': msg.value uint (1,inf)
+, 'participants': participants:
+, '_someNumber': _someNumber uint (0.0,inf)
+, '_prize': _prize uint (0,inf)
+, '_fee': _fee uint (0,inf)
+, 'validateMe': validateMe uint (0,inf)
+},
+Booleans variables:{'_gameEnded': _gameEnded bool (0,1)
+, 'TMP_2': TMP_2 bool msg.value == _fee assert/require
+, 'TMP_4': TMP_4 bool participants[msg.sender] == 0 assert/require
+, 'TMP_6': TMP_6 bool _gameEnded == false assert/require
+},
+Constraints:[('TMP_2', True), ('TMP_4', True), ('TMP_6', True)]
+}
+
+Node 10:
+ {
+Numeric variables:{'block.timestamp': block.timestamp uint (1,inf)
+, 'block.difficulty': block.difficulty uint (1,inf)
+, 'block.number': block.number uint (1,inf)
+, 'msg.sender': msg.sender uint (1,inf)
+, 'msg.value': msg.value uint (1,inf)
+, 'participants': participants:
+, '_someNumber': _someNumber uint (0.0,inf)
+, '_prize': _prize uint (0,inf)
+, '_fee': _fee uint (0,inf)
+, 'validateMe': validateMe uint (0,inf)
+},
+Booleans variables:{'_gameEnded': _gameEnded bool (0,1)
+, 'TMP_2': TMP_2 bool msg.value == _fee assert/require
+, 'TMP_4': TMP_4 bool participants[msg.sender] == 0 assert/require
+, 'TMP_6': TMP_6 bool _gameEnded == false assert/require
+},
+Constraints:[('TMP_2', True), ('TMP_4', True), ('TMP_6', True)]
+}
+

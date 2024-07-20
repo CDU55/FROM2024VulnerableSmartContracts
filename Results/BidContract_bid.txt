@@ -1,0 +1,128 @@
+Node 0:ENTRY_POINT
+ {
+Numeric variables:{'block.timestamp': block.timestamp uint (1,inf)
+, 'block.difficulty': block.difficulty uint (1,inf)
+, 'block.number': block.number uint (1,inf)
+, 'msg.sender': msg.sender uint (1,inf)
+, 'msg.value': msg.value uint (1,inf)
+, 'bidders': bidders:
+, 'bidderNumber': bidderNumber uint (0,inf)
+, 'newBid': newBid uint (0,inf)
+},
+Booleans variables:{},
+Constraints:[]
+}
+
+Node 1:EXPRESSION require(bool)(msg.value > 10)
+ {
+Numeric variables:{'block.timestamp': block.timestamp uint (1,inf)
+, 'block.difficulty': block.difficulty uint (1,inf)
+, 'block.number': block.number uint (1,inf)
+, 'msg.sender': msg.sender uint (1,inf)
+, 'msg.value': msg.value uint (1,inf)
+, 'bidders': bidders:
+, 'bidderNumber': bidderNumber uint (0,inf)
+, 'newBid': newBid uint (0,inf)
+},
+Booleans variables:{},
+Constraints:[]
+}
+
+Node 2:NEW VARIABLE newBid = bidders[bidderNumber] + msg.value
+ {
+Numeric variables:{'block.timestamp': block.timestamp uint (1,inf)
+, 'block.difficulty': block.difficulty uint (1,inf)
+, 'block.number': block.number uint (1,inf)
+, 'msg.sender': msg.sender uint (1,inf)
+, 'msg.value': msg.value uint (1,inf)
+, 'bidders': bidders:
+, 'bidderNumber': bidderNumber uint (0,inf)
+, 'newBid': newBid uint (0,inf)
+},
+Booleans variables:{'TMP_0': TMP_0 bool msg.value > 10 assert/require
+},
+Constraints:[('TMP_0', True)]
+}
+
+Node 3:IF newBid > 10
+ {
+Numeric variables:{'block.timestamp': block.timestamp uint (1,inf)
+, 'block.difficulty': block.difficulty uint (1,inf)
+, 'block.number': block.number uint (1,inf)
+, 'msg.sender': msg.sender uint (1,inf)
+, 'msg.value': msg.value uint (1,inf)
+, 'bidders': bidders:
+, 'bidderNumber': bidderNumber uint (0,inf)
+, 'newBid': newBid uint (1,inf)
+},
+Booleans variables:{'TMP_0': TMP_0 bool msg.value > 10 assert/require
+},
+Constraints:[('TMP_0', True)]
+}
+
+Node 4:EXPRESSION bidders[bidderNumber] = newBid
+ {
+Numeric variables:{'block.timestamp': block.timestamp uint (1,inf)
+, 'block.difficulty': block.difficulty uint (1,inf)
+, 'block.number': block.number uint (1,inf)
+, 'msg.sender': msg.sender uint (1,inf)
+, 'msg.value': msg.value uint (1,inf)
+, 'bidders': bidders:
+, 'bidderNumber': bidderNumber uint (0,inf)
+, 'newBid': newBid uint (1,inf)
+},
+Booleans variables:{'TMP_0': TMP_0 bool msg.value > 10 assert/require
+, 'TMP_3': TMP_3 bool newBid > 10 condition
+},
+Constraints:[('TMP_0', True), ('TMP_3', True)]
+}
+
+Node 5:EXPRESSION revert(string)(Inssuficient bid)
+ {
+Numeric variables:{'block.timestamp': block.timestamp uint (1,inf)
+, 'block.difficulty': block.difficulty uint (1,inf)
+, 'block.number': block.number uint (1,inf)
+, 'msg.sender': msg.sender uint (1,inf)
+, 'msg.value': msg.value uint (1,inf)
+, 'bidders': bidders:
+, 'bidderNumber': bidderNumber uint (0,inf)
+, 'newBid': newBid uint (1,inf)
+},
+Booleans variables:{'TMP_0': TMP_0 bool msg.value > 10 assert/require
+, 'TMP_3': TMP_3 bool newBid > 10 condition
+},
+Constraints:[('TMP_0', True), ('TMP_3', False)]
+}
+
+Node 6:END_IF
+ {
+Numeric variables:{'bidders': bidders:
+, 'block.timestamp': block.timestamp uint (1,inf)
+, 'block.difficulty': block.difficulty uint (1,inf)
+, 'block.number': block.number uint (1,inf)
+, 'msg.sender': msg.sender uint (1,inf)
+, 'msg.value': msg.value uint (1,inf)
+, 'bidderNumber': bidderNumber uint (0,inf)
+, 'newBid': newBid uint (1,inf)
+},
+Booleans variables:{'TMP_0': TMP_0 bool msg.value > 10 assert/require
+},
+Constraints:[('TMP_0', True)]
+}
+
+Node 7:
+ {
+Numeric variables:{'bidders': bidders:
+, 'block.timestamp': block.timestamp uint (1,inf)
+, 'block.difficulty': block.difficulty uint (1,inf)
+, 'block.number': block.number uint (1,inf)
+, 'msg.sender': msg.sender uint (1,inf)
+, 'msg.value': msg.value uint (1,inf)
+, 'bidderNumber': bidderNumber uint (0,inf)
+, 'newBid': newBid uint (1,inf)
+},
+Booleans variables:{'TMP_0': TMP_0 bool msg.value > 10 assert/require
+},
+Constraints:[('TMP_0', True)]
+}
+
